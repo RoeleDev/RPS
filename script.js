@@ -1,45 +1,51 @@
-'use strict';
-
-// const playerChoise = ();
-// const pcChoice = ();
-// function dice() {}
-
-let roll = Math.trunc(Math.random() * 3) + 1;
-console.log(`Computer rolling dice and its choise ${roll}`);
+const playerScore = 0;
+const computerScore = 0;
+const winner = '';
 
 function getComputerChoice() {
-  if (roll === 1) {
-    return 'Rock';
-  } else if (roll === 2) {
-    return 'Paper';
-  } else if (roll === 3) {
-    return 'Scissors';
-  } else console.log(`Error dice is broken`);
+  let roll = Math.floor(Math.random() * 3);
+  switch (roll) {
+    case 0:
+      return 'Rock';
+    case 1:
+      return 'Paper';
+    case 2:
+      return 'Scissors';
+  }
 }
-getComputerChoice();
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
 
-const playerSelection = prompt('Choose between Rock Paper Scissors?');
-console.log(playerSelection);
+function getUserChoice() {
+  let playerSelection = prompt('Choose between: Rock/ Paper / Scissors?');
+  console.log(playerSelection);
+  return playerSelection;
+}
 
-function playRound(playerSelection, computerSelection) {
-  if (playerSelection === computerSelection) {
-    console.log(`world decided to make love not war`);
-  } else if (
+function getWinner(playerSelection, computerSelection) {
+  if (
     (playerSelection === 'Paper' && computerSelection === 'Rock') ||
     (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
     (playerSelection === 'Scissors' && computerSelection === 'Papper')
   ) {
-    console.log(`Human win`);
+    console.log(
+      `You win!😎 Your choice  ${playerSelection} beat computer choice ${computerSelection}`
+    );
   } else if (
     (computerSelection === 'Paper' && playerSelection === 'Rock') ||
     (computerSelection === 'Rock' && playerSelection === 'Scissors') ||
     (computerSelection === 'Scissors' && playerSelection === 'Papper')
-  )
-    console.log(`Computer win`);
-  else {
-    console.log(`something go terribly wrong, plz try again`);
+  ) {
+    console.log(
+      `You lose 😥 Computer choice ${computerSelection} beats your choice ${playerSelection}`
+    );
+  } else if (playerSelection === computerSelection) {
+    console.log(`Draw 🤗`);
   }
+}
+
+function playRound() {
+  let a = getUserChoice();
+  let b = getComputerChoice();
+
+  getWinner(a, b);
 }
 playRound();
