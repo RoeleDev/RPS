@@ -18,14 +18,28 @@ function getComputerChoice() {
 }
 getComputerChoice();
 const computerSelection = getComputerChoice();
+console.log(computerSelection);
+
+const playerSelection = prompt('Choose between Rock Paper Scissors?');
+console.log(playerSelection);
 
 function playRound(playerSelection, computerSelection) {
-  // your code here!
+  if (playerSelection === computerSelection) {
+    console.log(`world decided to make love not war`);
+  } else if (
+    (playerSelection === 'Paper' && computerSelection === 'Rock') ||
+    (playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+    (playerSelection === 'Scissors' && computerSelection === 'Papper')
+  ) {
+    console.log(`Human win`);
+  } else if (
+    (computerSelection === 'Paper' && playerSelection === 'Rock') ||
+    (computerSelection === 'Rock' && playerSelection === 'Scissors') ||
+    (computerSelection === 'Scissors' && playerSelection === 'Papper')
+  )
+    console.log(`Computer win`);
+  else {
+    console.log(`something go terribly wrong, plz try again`);
+  }
 }
-
-('You Win! Paper loose to a Scissors');
-('Draw! Paper decide to make love with another Paper');
-('You Lose! Paper beats Rock');
-
-const playerSelection = 'rock';
-console.log(playRound(playerSelection, computerSelection));
+playRound();
